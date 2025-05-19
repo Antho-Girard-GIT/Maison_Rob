@@ -28,7 +28,7 @@ export function Depense() {
   useEffect(() => {
     getCout();
     fetchDepenses();
-  }, []);
+  }, [fetchDepenses]);
   async function getCout() {
     const { data } = await supabase.from("cout").select();
     setCout(data);
