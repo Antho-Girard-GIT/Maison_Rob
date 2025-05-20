@@ -2,9 +2,15 @@ import { useDepenses } from "../context/depensescontext";
 import { AchatList } from "../context/achatlist";
 import { FaireList } from "../context/fairelist";
 import { CommandeList } from "../context/commandelist";
+import { useEffect } from "react";
 
 export function Home() {
-  const { depenses } = useDepenses();
+  const { depenses, fetchDepenses } = useDepenses();
+
+  useEffect(() => {
+    fetchDepenses();
+  }, [fetchDepenses]);
+  
   const totaldepenses = depenses.reduce((acc, d) => acc + d.montant, 0);
 
   return (
