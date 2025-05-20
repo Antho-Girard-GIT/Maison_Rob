@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useFaire } from "../context/fairecontext";
 import { FaireList } from "../context/fairelist";
+import { supabase } from "../supabaseClient"
 
 export function Faire() {
   const [tache, setTache] = useState("");
-  const { addTache } = useFaire();
+  const { fetchTaches } = useFaire();
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
-    if (!tache.trim()) return;
-    addTache(tache.trim());
+    if (!tache) return;
+    await supabase.from("todotable").insert([{ todo: tache }]);
     setTache("");
+    fetchTaches();
   };
-
-
+ 
   return (
     <div className="max-w-md mx-auto mt-8 p-4 bg-zinc-100 rounded shadow">
       <form onSubmit={handleAdd} className="flex gap-2 mb-4">

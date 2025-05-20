@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useAchat } from "../context/achatcontext";
 import { AchatList } from "../context/achatlist";
+import { supabase } from "../supabaseClient"
 
 export function Achat() {
   const [achat, setAchat] = useState("");
-  const { addAchat } = useAchat();
+  const { fetchAchat } = useAchat();
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
-    if (!achat.trim()) return;
-    addAchat(achat.trim());
+    if (!achat) return;
+    await supabase.from("achat").insert([{ achatdetail: achat }]);
     setAchat("");
+    fetchAchat();
   };
 
   return (

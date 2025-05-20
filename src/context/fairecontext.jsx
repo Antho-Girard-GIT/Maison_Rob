@@ -1,16 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { supabase } from "../supabaseClient"
 
 const FaireContext = createContext();
 
 export function FaireProvider({ children }) {
   const [taches, setTaches] = useState([]);
 
-  const addTache = (tache) => setTaches((prev) => [...prev, tache]);
-  const deleteTache = (index) =>
-    setTaches((prev) => prev.filter((_, i) => i !== index));
+  async function fetchTaches() {
+    const { data } = await supabase.from("todotable").select();
+    setTaches(data || []);
+  }
+
+  useEffect(() => {
+    fetchTaches();
+  }, []);
+
+  const deleteTache = async (id) => {
+    await supabase.from("todotable").delete().eq("id", id);
+    fetchTaches();
+  };
 
   return (
-    <FaireContext.Provider value={{ taches, addTache, deleteTache }}>
+    <FaireContext.Provider value={{ taches, deleteTache, fetchTaches }}>
       {children}
     </FaireContext.Provider>
   );

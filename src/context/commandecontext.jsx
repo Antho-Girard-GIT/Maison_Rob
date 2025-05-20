@@ -1,16 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { supabase } from "../supabaseClient"
 
 const CommandeContext = createContext();
 
 export function CommandeProvider({ children }) {
   const [commandes, setCommandes] = useState([]);
 
-  const addCommande = (commande) => setCommandes((prev) => [...prev, commande]);
-  const deleteCommande = (index) =>
-    setCommandes((prev) => prev.filter((_, i) => i !== index));
+  async function fetchCommande() {
+      const { data } = await supabase.from("comms").select();
+      setCommandes(data || []);
+    }
+  
+    useEffect(() => {
+      fetchCommande();
+    }, []);
+
+  const deleteCommande = async (id) => {
+    await supabase.from("comms").delete().eq("id", id);
+    fetchCommande();
+  };
 
   return (
-    <CommandeContext.Provider value={{ commandes, addCommande, deleteCommande }}>
+    <CommandeContext.Provider value={{ commandes, fetchCommande, deleteCommande }}>
       {children}
     </CommandeContext.Provider>
   );

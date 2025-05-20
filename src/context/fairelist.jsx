@@ -5,11 +5,11 @@ export function FaireList() {
 
   return (
     <ul className="list-disc pl-5">
-      {taches.map((tache, i) => (
-        <li key={i} className="py-1 flex items-center justify-between">
-          <span>{tache}</span>
+      {taches.map((tache) => (
+        <li key={tache.id} className="py-1 flex items-center justify-between">
+          <span>{tache.todo}</span>
           <button
-            onClick={() => deleteTache(i)}
+            onClick={() => deleteTache(tache.id)}
             className="ml-4 bg-red-500 text-white rounded px-2 py-1 text-xs"
           >
             Supprimer

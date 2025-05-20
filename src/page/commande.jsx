@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useCommande } from "../context/commandecontext";
 import { CommandeList } from "../context/commandelist";
+import { supabase } from "../supabaseClient"
 
 export function Commande() {
   const [commande, setCommande] = useState("");
-  const { addCommande } = useCommande();
+  const { fetchCommande } = useCommande();
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
-    if (!commande.trim()) return;
-    addCommande(commande.trim());
+    if (!commande) return;
+    await supabase.from("comms").insert([{ detail: commande }]);
     setCommande("");
+    fetchCommande();
   };
 
   return (
