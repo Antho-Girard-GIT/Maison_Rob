@@ -16,7 +16,7 @@ export function Achat() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-zinc-100 rounded shadow">
+    <div className="max-w-md mx-auto mt-8 p-4 bg-yellow-100 rounded shadow">
       <form onSubmit={handleAdd} className="flex gap-2 mb-4">
         <input
           type="text"
@@ -27,7 +27,7 @@ export function Achat() {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded px-4"
+          className="bg-yellow-950 text-white rounded px-4"
         >
           Ajouter
         </button>

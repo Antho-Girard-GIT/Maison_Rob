@@ -35,7 +35,7 @@ export function Depense() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-zinc-100 rounded shadow">
+    <div className="max-w-md mx-auto mt-8 p-4 bg-yellow-100 rounded shadow">
       <form onSubmit={handleAdd} className="flex flex-col gap-4 mb-4">
         <input
           type="number"
@@ -51,8 +51,9 @@ export function Depense() {
           value={info}
           onChange={e => setInfo(e.target.value)}
           className="border rounded p-2"
+          required
         />
-        <button type="submit" className="bg-blue-500 text-white rounded p-2">Ajouter</button>
+        <button type="submit" className="bg-yellow-950 text-white rounded p-2">Ajouter</button>
       </form>
       <div className="font-bold text-lg mb-2">
         Total des dépenses : {depenses.reduce((acc, d) => acc + (d.montant || 0), 0).toFixed(2)}
@@ -62,14 +63,14 @@ export function Depense() {
         <ul className="space-y-1">
           {depenses.map((c) => (
             <li key={c.id || c.name} className="border-b py-1 flex justify-between">
-              <span className="italic text-gray-400">{c.info || c.name}</span>
+              <span className="italic text-yellow-800">{c.info || c.name}</span>
               <span className="font-mono">{(c.montant || 0).toFixed(2)} $</span>
               <button
                 onClick={() => handleDelete(c.id)}
                 className="ml-2 bg-red-500 text-white px-2 py-1 rounded text-xs"
                 title="Supprimer"
               >
-                Supprimer
+                X
               </button>
             </li>
           ))}
