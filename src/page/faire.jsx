@@ -29,7 +29,7 @@ export function Faire() {
           type="submit"
           className="bg-yellow-950 text-white rounded px-4"
         >
-          X
+          Ajouter
         </button>
       </form>
       <FaireList />
