@@ -10,7 +10,7 @@ export function FaireList() {
           <span className="font-bold">{tache.todo}</span>
           <button
             onClick={() => deleteTache(tache.id)}
-            className="ml-4 bg-red-500 text-white rounded px-2 py-1 text-xs"
+            className="ml-4 bg-red-600 text-white rounded px-2 py-1 text-xs"
           >
             X
           </button>

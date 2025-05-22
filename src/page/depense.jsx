@@ -67,7 +67,7 @@ export function Depense() {
               <span className="font-mono">{(c.montant || 0).toFixed(2)} $</span>
               <button
                 onClick={() => handleDelete(c.id)}
-                className="ml-2 bg-red-500 text-white px-2 py-1 rounded text-xs"
+                className="ml-2 bg-red-600 text-white px-2 py-1 rounded text-xs"
                 title="Supprimer"
               >
                 X

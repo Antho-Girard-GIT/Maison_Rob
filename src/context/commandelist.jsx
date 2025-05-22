@@ -10,7 +10,7 @@ export function CommandeList() {
           <span className="font-bold">{commande.detail}</span>
           <button
             onClick={() => deleteCommande(commande.id)}
-            className="ml-4 bg-red-500 text-white rounded px-2 py-1 text-xs"
+            className="ml-4 bg-red-600 text-white rounded px-2 py-1 text-xs"
           >
             X
           </button>
