@@ -7,7 +7,7 @@ export function CommandeProvider({ children }) {
   const [commandes, setCommandes] = useState([]);
 
   async function fetchCommande() {
-      const { data } = await supabase.from("comms").select();
+      const { data } = await supabase.from("comms").select().order('id',{ ascending: false});
       setCommandes(data || []);
     }
   

@@ -4,30 +4,44 @@ import { CommandeList } from "../context/commandelist";
 import { supabase } from "../supabaseClient"
 
 export function Commande() {
-  const [commande, setCommande] = useState("");
+  const [detail, setDetail] = useState("");
+  const [mesure, setMesure] = useState("");
   const { fetchCommande } = useCommande();
+
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    if (!commande) return;
-    await supabase.from("comms").insert([{ detail: commande }]);
-    setCommande("");
+    if (!detail || !mesure) return;
+    await supabase.from("comms").insert([{ 
+      detail: detail,
+      mesure: mesure }]);
+    setDetail("");
+    setMesure("")
     fetchCommande();
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-yellow-100 rounded shadow">
-      <form onSubmit={handleAdd} className="flex gap-2 mb-4">
+    <div className="border rounded-xl p-5 m-2 shadow-xl/30 bg-[#38A7A6]">
+      <form onSubmit={handleAdd} className="flex flex-col gap-2 mb-4">
         <input
           type="text"
-          placeholder="Ajouter une commande"
-          value={commande}
-          onChange={(e) => setCommande(e.target.value)}
-          className="border rounded p-2 flex-1"
+          placeholder="Emplacements"
+          value={detail}
+          onChange={(e) => setDetail(e.target.value)}
+          className="border rounded p-2 flex-1 bg-[#B6FFF6]"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Ajouter une mesure"
+          value={mesure}
+          onChange={(e) => setMesure(e.target.value)}
+          className="border rounded p-2 flex-1 bg-[#B6FFF6]"
+          required
         />
         <button
           type="submit"
-          className="bg-yellow-950 text-white rounded px-4"
+          className="bg-[#001952] text-[#fff] rounded p-2"
         >
           Ajouter
         </button>

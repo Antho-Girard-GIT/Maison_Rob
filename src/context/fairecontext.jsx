@@ -7,7 +7,7 @@ export function FaireProvider({ children }) {
   const [taches, setTaches] = useState([]);
 
   async function fetchTaches() {
-    const { data } = await supabase.from("todotable").select();
+    const { data } = await supabase.from("todotable").select().order('id',{ ascending: false});
     setTaches(data || []);
   }
 

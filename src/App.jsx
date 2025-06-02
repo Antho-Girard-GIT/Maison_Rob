@@ -15,6 +15,7 @@ import { Commande } from "./page/commande";
 function App() {
 
   return (
+    <div className="bg-[#0D1B2B] h-screen">
     <CommandeProvider>
     <FaireProvider>
     <AchatProvider>
@@ -34,6 +35,7 @@ function App() {
     </AchatProvider>
     </FaireProvider>
     </CommandeProvider>
+    </div>
   )
 }
 

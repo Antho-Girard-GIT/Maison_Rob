@@ -35,14 +35,14 @@ export function Depense() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-yellow-100 rounded shadow">
+    <div className="border rounded-xl p-5 m-2 shadow-xl/30 bg-[#38A7A6]">
       <form onSubmit={handleAdd} className="flex flex-col gap-4 mb-4">
         <input
           type="number"
           placeholder="Montant"
           value={montant}
           onChange={e => setMontant(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 flex-1 bg-[#B6FFF6]"
           required
         />
         <input
@@ -50,10 +50,10 @@ export function Depense() {
           placeholder="Informations"
           value={info}
           onChange={e => setInfo(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 flex-1 bg-[#B6FFF6]"
           required
         />
-        <button type="submit" className="bg-yellow-950 text-white rounded p-2">Ajouter</button>
+        <button type="submit" className="bg-[#001952] text-[#fff] rounded p-2">Ajouter</button>
       </form>
       <div className="font-bold text-lg mb-2">
         Total des dépenses : {depenses.reduce((acc, d) => acc + (d.montant || 0), 0).toFixed(2)}
@@ -61,9 +61,9 @@ export function Depense() {
       <div>
         <h3 className="font-semibold mb-2">Liste des dépenses :</h3>
         <ul className="space-y-1">
-          {depenses.map((c) => (
+          {[...depenses].reverse().map((c) => (
             <li key={c.id || c.name} className="border-b py-1 flex justify-between">
-              <span className="italic text-yellow-800">{c.info || c.name}</span>
+              <span className="italic">{c.info || c.name}</span>
               <span className="font-mono">{(c.montant || 0).toFixed(2)} $</span>
               <button
                 onClick={() => handleDelete(c.id)}

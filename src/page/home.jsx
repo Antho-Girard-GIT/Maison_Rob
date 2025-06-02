@@ -14,25 +14,31 @@ export function Home() {
   const totaldepenses = depenses.reduce((acc, d) => acc + d.montant, 0);
 
   return (
-    <div className=" flex items-center justify-center">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="card-body size-50 flex flex-col rounded shadow border-2 border-yellow-800">
-          <h2 className="text-lg font-bold mb-2 underline text-center">Dépenses</h2>
-          <span className="m-auto size-35 text-center rounded text-lg font-bold p-5 ">
+    <div className=" flex items-center justify-center m-1">
+      <div className="grid grid-cols-2 gap-3">
+        <div className="card-body size-45 flex flex-col border rounded-xl inset-shadow-sm/50">
+          <h2 className="text-xl font-bold text-center text-[#fff]">Dépenses</h2>
+          <span className="size-30 text-center text-xl m-auto flex items-center justify-center text-[#fff]">
           {totaldepenses.toFixed(2)} $
           </span>
         </div>
-        <div className="card-body size-50 border-2 border-yellow-800 flex flex-col rounded shadow overflow-hidden">
-          <h2 className="text-lg font-bold mb-2 underline text-center">Achat</h2>
-          <AchatList />
+        <div className="card-body size-45 border flex flex-col rounded-xl inset-shadow-sm/50 overflow-hidden">
+          <h2 className="text-xl font-bold text-center text-[#fff]">Achat</h2>
+          <span className="text-sm truncate">
+          <AchatList isHomePage={true} />
+          </span>
         </div>
-        <div className="card-body size-50 border-2 border-yellow-800 flex flex-col rounded shadow">
-          <h2 className="text-lg font-bold mb-2 underline text-center">Commandes</h2>
-          <CommandeList />
+        <div className="card-body size-45 border flex flex-col rounded-xl inset-shadow-sm/50 overflow-hidden">
+          <h2 className="text-xl font-bold text-center text-[#fff]">Mesures</h2>
+          <span className="text-sm truncate">
+          <CommandeList isHomePage={true} />
+          </span>
         </div>
-        <div className="card-body size-50 border-2 border-yellow-800 flex flex-col rounded shadow overflow-hidden">
-          <h2 className="text-lg font-bold mb-2 underline text-center">À faire</h2>
-          <FaireList />
+        <div className="card-body size-45 border flex flex-col rounded-xl inset-shadow-sm/50 overflow-hidden">
+          <h2 className="text-xl font-bold text-center text-[#fff]">À faire</h2>
+          <span className="text-sm truncate">
+          <FaireList isHomePage={true} />
+          </span>
         </div>
       </div>
     </div>

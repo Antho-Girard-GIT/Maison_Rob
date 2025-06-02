@@ -7,7 +7,7 @@ export function AchatProvider({ children }) {
   const [achats, setAchats] = useState([]);
 
   async function fetchAchat() {
-        const { data } = await supabase.from("achat").select();
+        const { data } = await supabase.from("achat").select().order('id',{ ascending: false});
         setAchats(data || []);
       }
     
