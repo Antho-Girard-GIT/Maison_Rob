@@ -8,7 +8,7 @@ export function CommandeList({ isHomePage }) {
       {commandes.map((commande) => (
         <li key={commande.id} className="py-1 flex items-center justify-between border-b">
           <div className="flex flex-col">
-            <span className={`font-semibold ${isHomePage ? 'text-white' : ''}`}>
+            <span className="font-semibold text-white">
               {commande.detail}
             </span>
             <span className={`text-sm ${isHomePage ? 'text-white' : ''}`}>

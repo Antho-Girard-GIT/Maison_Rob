@@ -15,7 +15,7 @@ import { Commande } from "./page/commande";
 function App() {
 
   return (
-    <div className="bg-[#0D1B2B] h-screen">
+    <div className="bg-[#1D1D1D] h-screen">
     <CommandeProvider>
     <FaireProvider>
     <AchatProvider>

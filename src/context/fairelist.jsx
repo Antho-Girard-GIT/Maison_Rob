@@ -7,7 +7,7 @@ export function FaireList({ isHomePage }) {
     <ul className="list-disc pl-2">
       {taches.map((tache) => (
         <li key={tache.id} className="py-1 flex items-center justify-between">
-          <span className={` ${isHomePage ? 'text-white' : ''}`}>{tache.todo}</span>
+          <span className="font-semibold text-white">{tache.todo}</span>
           {!isHomePage && (
           <button
             onClick={() => deleteTache(tache.id)}

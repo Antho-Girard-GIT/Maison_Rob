@@ -16,18 +16,18 @@ export function Achat() {
   };
 
   return (
-    <div className="border rounded-xl p-5 m-2 shadow-xl/30 bg-[#38A7A6]">
+    <div className="border rounded-xl p-5 m-2 shadow-xl/30 bg-[#01257D]">
       <form onSubmit={handleAdd} className="flex gap-2 mb-4">
         <input
           type="text"
           placeholder="Ajouter un achat"
           value={achat}
           onChange={(e) => setAchat(e.target.value)}
-          className="border rounded p-2 flex-1 bg-[#B6FFF6]"
+          className="border rounded p-2 flex-1 bg-[#1D1D1D] text-white"
         />
         <button
           type="submit"
-          className="bg-[#001952] text-[#fff] rounded px-4"
+          className="bg-[#01257D] text-[#fff] rounded px-4 ring-2 ring-blue-500/50"
         >
           Ajouter
         </button>

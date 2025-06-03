@@ -7,7 +7,7 @@ export function AchatList({ isHomePage }) {
     <ul className="list-disc pl-2">
       {achats.map((achat) => (
         <li key={achat.id} className="py-1 flex items-center justify-between">
-          <span className={` ${isHomePage ? 'text-white' : ''}`}>{achat.achatdetail}</span>
+          <span className="text-white">{achat.achatdetail}</span>
           {!isHomePage && (
           <button
             onClick={() => deleteAchat(achat.id)}
