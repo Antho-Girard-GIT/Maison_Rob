@@ -63,6 +63,7 @@ export function Depense() {
         <ul className="space-y-1">
           {[...depenses].reverse().map((c) => (
             <li key={c.id || c.name} className="border-b py-1 flex justify-between">
+              <input type="checkbox" className="checkbox checkbox-sm border-[#fff] checked:bg-[#fff] checked:text-[#01257D]"/>
               <span className="italic text-white">{c.info || c.name}</span>
               <span className="font-mono text-white">{(c.montant || 0).toFixed(2)} $</span>
               <button
