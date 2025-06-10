@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDepenses } from "../context/depensescontext";
 import { supabase } from "../supabaseClient"
-import checkbox from "daisyui/components/checkbox";
 
 
 export function Depense() {
