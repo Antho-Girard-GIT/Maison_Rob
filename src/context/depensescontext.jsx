@@ -8,7 +8,10 @@ export function DepensesProvider({ children }) {
 
   // Fonction pour charger les dépenses depuis Supabase
   async function fetchDepenses() {
-    const { data } = await supabase.from("cout").select();
+    const { data } = await supabase
+    .from("cout")
+    .select("*")
+    .order('id', { ascending: false });
     setDepenses(data || []);
   }
 

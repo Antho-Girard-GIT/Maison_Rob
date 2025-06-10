@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDepenses } from "../context/depensescontext";
 import { supabase } from "../supabaseClient"
+import checkbox from "daisyui/components/checkbox";
 
 
 export function Depense() {
@@ -15,19 +16,13 @@ export function Depense() {
     await supabase.from("cout").insert([{ montant: parseFloat(montant), info }]);
     setMontant("");
     setInfo("");
-    getCout("");
     fetchDepenses();
   };
 
-  const [cout, setCout] = useState([]);
+
   useEffect(() => {
-    getCout();
     fetchDepenses();
-  }, [fetchDepenses]);
-  async function getCout() {
-    const { data } = await supabase.from("cout").select();
-    setCout(data);
-  };
+  })
 
     const handleDelete = async (id) => {
     await supabase.from("cout").delete().eq("id", id);
@@ -37,7 +32,7 @@ export function Depense() {
   const handleCheckboxChange = async (id, isChecked) => {
   await supabase
     .from("cout")
-    .update({ is_checked: isChecked })
+    .update({ checkbox: isChecked })
     .eq("id", id);
   fetchDepenses();
 };
@@ -69,12 +64,12 @@ export function Depense() {
       <div>
         <h3 className="font-semibold mb-2 text-white">Liste des dépenses :</h3>
         <ul className="space-y-1">
-          {[...depenses].reverse().map((c) => (
+          {depenses.map((c) => (
             <li key={c.id || c.name} className="border-b py-1 flex justify-between">
               <input 
               type="checkbox" 
               className="checkbox checkbox-sm border-[#fff] checked:bg-[#fff] checked:text-[#01257D]"
-              checked={c.isChecked || false}
+              checked={c.checkbox || false}
               onChange={(e) => handleCheckboxChange(c.id, e.target.checked)}/>
               <span className="italic text-white">{c.info || c.name}</span>
               <span className="font-mono text-white">{(c.montant || 0).toFixed(2)} $</span>
